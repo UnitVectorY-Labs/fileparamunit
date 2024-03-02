@@ -28,6 +28,7 @@ The following example looks at all files under resources in the `testData` folde
 package example;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.unitvectory.fileparamunit.ListFileSource;
 import java.io.File;
 import org.junit.jupiter.params.ParameterizedTest;
 

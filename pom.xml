@@ -10,7 +10,6 @@
     <description>Library for creating parameterized JUnit 5 tests based on files that exist in resources.</description>
     <url>https://github.com/UnitVectorY-Labs/fileparamunit</url>
 
-
     <licenses>
         <license>
             <name>Eclipse Public License v2.0</name>
