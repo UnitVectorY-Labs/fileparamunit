@@ -21,6 +21,7 @@ This library requires Java 17 and JUnit 5 and is available in the Maven Central 
     <groupId>com.unitvectory</groupId>
     <artifactId>fileparamunit</artifactId>
     <version>0.0.1</version>
+    <scope>test</scope>
 </dependency>
 ```
 
