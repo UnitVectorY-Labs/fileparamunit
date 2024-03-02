@@ -12,9 +12,15 @@ The reasoning behind this is that a set of test data can be used with a common J
 
 ## Getting Started
 
-This library requires Java 17 and JUnit 5.
+This library requires Java 17 and JUnit 5 and is available in the Maven Central Repository:
 
-This library is under development and not published yet.
+```
+<dependency>
+    <groupId>com.unitvectory</groupId>
+    <artifactId>fileparamunit</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
 
 ## Usage
 
