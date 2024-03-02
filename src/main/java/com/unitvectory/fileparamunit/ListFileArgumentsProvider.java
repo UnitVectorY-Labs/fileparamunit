@@ -20,9 +20,8 @@ import org.junit.platform.commons.JUnitException;
 import org.junit.platform.commons.util.Preconditions;
 
 /**
- * The list file argument provider.
- * 
- * This implementation is adapted from org.junit.jupiter.params.provider.CsvFileArgumentsProvider
+ * The list file argument provider will provide the absolute path to the specified files in each of
+ * the files that exist in the specified folder filtered by their file extensions.
  * 
  * @author Jared Hatfield (UnitVectorY Labs)
  */
