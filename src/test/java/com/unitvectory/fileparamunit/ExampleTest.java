@@ -20,7 +20,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 public class ExampleTest {
 
     @ParameterizedTest
-    @ListFileSource(resources = "/testData", fileExtension = ".json", recurse = true)
+    @ListFileSource(resources = "/testData/", fileExtension = ".json", recurse = true)
     public void exampleTest(String fileName) {
         File file = new File(fileName);
 

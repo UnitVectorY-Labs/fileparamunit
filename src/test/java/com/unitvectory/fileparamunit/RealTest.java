@@ -25,7 +25,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 public class RealTest {
 
     @ParameterizedTest
-    @ListFileSource(resources = "/files", fileExtension = ".json", recurse = true)
+    @ListFileSource(resources = "/files/", fileExtension = ".json", recurse = true)
     public void testRecurseJson(String fileName) {
         File file = new File(fileName);
         Set<String> allowedNames = new HashSet<>(Arrays.asList("foo.json", "bar.json", "baz.json"));
@@ -34,7 +34,7 @@ public class RealTest {
     }
 
     @ParameterizedTest
-    @ListFileSource(resources = "/files", fileExtension = ".json", recurse = false)
+    @ListFileSource(resources = "/files/", fileExtension = ".json", recurse = false)
     public void testNoRecurseJson(String fileName) {
         File file = new File(fileName);
         Set<String> allowedNames = new HashSet<>(Arrays.asList("baz.json"));
@@ -43,7 +43,7 @@ public class RealTest {
     }
 
     @ParameterizedTest
-    @ListFileSource(resources = "/files", fileExtension = ".csv", recurse = true)
+    @ListFileSource(resources = "/files/", fileExtension = ".csv", recurse = true)
     public void testRecurseCsv(String fileName) {
         File file = new File(fileName);
         Set<String> allowedNames = new HashSet<>(Arrays.asList("foo.csv", "bar.csv", "baz.csv"));
@@ -52,7 +52,7 @@ public class RealTest {
     }
 
     @ParameterizedTest
-    @ListFileSource(resources = "/files", fileExtension = ".csv", recurse = false)
+    @ListFileSource(resources = "/files/", fileExtension = ".csv", recurse = false)
     public void testNoRecurseCsv(String fileName) {
         File file = new File(fileName);
         Set<String> allowedNames = new HashSet<>(Arrays.asList("baz.csv"));
@@ -62,7 +62,7 @@ public class RealTest {
 
 
     @ParameterizedTest
-    @ListFileSource(resources = "/files", fileExtension = ".txt", recurse = true)
+    @ListFileSource(resources = "/files/", fileExtension = ".txt", recurse = true)
     public void testRecurseTxt(String fileName) {
         File file = new File(fileName);
         Set<String> allowedNames = new HashSet<>(Arrays.asList("foo.txt", "bar.txt", "baz.txt"));
@@ -71,7 +71,7 @@ public class RealTest {
     }
 
     @ParameterizedTest
-    @ListFileSource(resources = "/files", fileExtension = ".txt", recurse = false)
+    @ListFileSource(resources = "/files/", fileExtension = ".txt", recurse = false)
     public void testNoRecurseTxt(String fileName) {
         File file = new File(fileName);
         Set<String> allowedNames = new HashSet<>(Arrays.asList("baz.txt"));

@@ -65,7 +65,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testYamlEmpty() {
-        Set<String> files = getFiles(buildMock("/files", true, ".yaml"));
+        Set<String> files = getFiles(buildMock("/files/", true, ".yaml"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames = new HashSet<>(Arrays.asList());
         assertEquals(expectedNames, actualNames);
@@ -73,7 +73,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testRecurseJson() {
-        Set<String> files = getFiles(buildMock("/files", true, ".json"));
+        Set<String> files = getFiles(buildMock("/files/", true, ".json"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames =
                 new HashSet<>(Arrays.asList("foo.json", "bar.json", "baz.json"));
@@ -82,7 +82,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testNoRecurseJson() {
-        Set<String> files = getFiles(buildMock("/files", false, ".json"));
+        Set<String> files = getFiles(buildMock("/files/", false, ".json"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames = new HashSet<>(Arrays.asList("baz.json"));
         assertEquals(expectedNames, actualNames);
@@ -90,7 +90,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testRecurseCsv() {
-        Set<String> files = getFiles(buildMock("/files", true, ".csv"));
+        Set<String> files = getFiles(buildMock("/files/", true, ".csv"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames = new HashSet<>(Arrays.asList("foo.csv", "bar.csv", "baz.csv"));
         assertEquals(expectedNames, actualNames);
@@ -98,7 +98,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testNoRecurseCsv() {
-        Set<String> files = getFiles(buildMock("/files", false, ".csv"));
+        Set<String> files = getFiles(buildMock("/files/", false, ".csv"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames = new HashSet<>(Arrays.asList("baz.csv"));
         assertEquals(expectedNames, actualNames);
@@ -106,7 +106,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testRecurseTxt() {
-        Set<String> files = getFiles(buildMock("/files", true, ".txt"));
+        Set<String> files = getFiles(buildMock("/files/", true, ".txt"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames = new HashSet<>(Arrays.asList("foo.txt", "bar.txt", "baz.txt"));
         assertEquals(expectedNames, actualNames);
@@ -114,7 +114,7 @@ public class ListFileArgumentsProviderTest {
 
     @Test
     public void testNoRecurseTxt() {
-        Set<String> files = getFiles(buildMock("/files", false, ".txt"));
+        Set<String> files = getFiles(buildMock("/files/", false, ".txt"));
         Set<String> actualNames = convertToFileNames(files);
         Set<String> expectedNames = new HashSet<>(Arrays.asList("baz.txt"));
         assertEquals(expectedNames, actualNames);
