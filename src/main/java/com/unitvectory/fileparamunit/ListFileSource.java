@@ -30,23 +30,31 @@ public @interface ListFileSource {
 
     /**
      * The path classpath resources to use as the sources of arguments; must not be empty unless
-     * {@link #files} is non-empty.
+     * {@link #directories} is non-empty.
+     * 
+     * @return the list of resource paths
      */
     String[] resources() default {};
 
     /**
      * The path to use as the sources of arguments; must not be empty unless {@link #resources} is
      * non-empty.
+     * 
+     * @return the list of directory paths
      */
     String[] directories() default {};
 
     /**
      * Recursively go through the subdirectories listing all files
+     * 
+     * @return should recurse through subdirectories
      */
     boolean recurse() default false;
 
     /**
      * Only files with this file extension will be returned.
+     * 
+     * @return file extension filter
      */
     String fileExtension();
 }
