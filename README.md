@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-EPL%202.0-blue.svg)](https://www.eclipse.org/legal/epl-v20.html) [![Maven Central](https://img.shields.io/maven-central/v/com.unitvectory/fileparamunit)](https://mvnrepository.com/artifact/com.unitvectory/fileparamunit)
+
 # fileparamunit
 
 Library for creating parameterized JUnit 5 tests based on files that exist in resources.
