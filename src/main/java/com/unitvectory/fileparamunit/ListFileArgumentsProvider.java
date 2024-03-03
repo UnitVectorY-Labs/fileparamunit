@@ -28,6 +28,13 @@ import org.junit.platform.commons.util.Preconditions;
  */
 public class ListFileArgumentsProvider extends AnnotationBasedArgumentsProvider<ListFileSource> {
 
+    /**
+     * Creates a new instance of the ListFileArgumentsProvider class.
+     */
+    public ListFileArgumentsProvider() {
+        super();
+    }
+
     @Override
     protected Stream<? extends Arguments> provideArguments(ExtensionContext context,
             ListFileSource listFileSource) {
