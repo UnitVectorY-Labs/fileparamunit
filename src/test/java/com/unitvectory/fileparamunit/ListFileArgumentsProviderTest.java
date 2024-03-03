@@ -10,10 +10,14 @@ package com.unitvectory.fileparamunit;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.platform.commons.JUnitException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import java.io.File;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -61,6 +65,64 @@ public class ListFileArgumentsProviderTest {
             out.add(f.getName());
         }
         return out;
+    }
+
+    @Test
+    public void testDirectoryDoesNoteExist() throws Exception {
+
+        URL url = this.getClass().getResource("/files/");
+        File directory = new File(url.toURI());
+
+        String path = directory.getAbsolutePath() + "/doesnotexist";
+        ListFileSource listFileSource = mock(ListFileSource.class);
+
+        when(listFileSource.resources()).thenReturn(new String[] {});
+        when(listFileSource.directories()).thenReturn(new String[] {path});
+        when(listFileSource.recurse()).thenReturn(false);
+        when(listFileSource.fileExtension()).thenReturn(".txt");
+
+        JUnitException exception = assertThrows(JUnitException.class, () -> {
+            getFiles(listFileSource);
+        });
+
+        assertTrue(exception.getMessage().contains(" does not exist."));
+    }
+
+    @Test
+    public void testDirectorySuccess() throws Exception {
+
+        URL url = this.getClass().getResource("/files/");
+        File directory = new File(url.toURI());
+
+        ListFileSource listFileSource = mock(ListFileSource.class);
+
+        when(listFileSource.resources()).thenReturn(new String[] {});
+        when(listFileSource.directories()).thenReturn(new String[] {directory.getAbsolutePath()});
+        when(listFileSource.recurse()).thenReturn(false);
+        when(listFileSource.fileExtension()).thenReturn(".txt");
+
+        Set<String> files = getFiles(listFileSource);
+        Set<String> actualNames = convertToFileNames(files);
+        Set<String> expectedNames = new HashSet<>(Arrays.asList("baz.txt"));
+        assertEquals(expectedNames, actualNames);
+    }
+
+    @Test
+    public void testOnNotDirectory() {
+        JUnitException exception = assertThrows(JUnitException.class, () -> {
+            getFiles(buildMock("/files/baz.txt", true, ".txt"));
+        });
+
+        assertTrue(exception.getMessage().contains(" is not a directory."));
+    }
+
+    @Test
+    public void testDirectoryNotExist() {
+        JUnitException exception = assertThrows(JUnitException.class, () -> {
+            getFiles(buildMock("/doesnotexist", true, ".txt"));
+        });
+
+        assertTrue(exception.getMessage().contains("Failed to get resource "));
     }
 
     @Test

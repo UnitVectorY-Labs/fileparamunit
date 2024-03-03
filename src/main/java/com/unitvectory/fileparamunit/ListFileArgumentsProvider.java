@@ -10,6 +10,7 @@ package com.unitvectory.fileparamunit;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -39,19 +40,22 @@ public class ListFileArgumentsProvider extends AnnotationBasedArgumentsProvider<
 
         // Load all of the directories
         for (String directoryName : listFileSource.directories()) {
-
             File directory = new File(directoryName);
             files.addAll(collect(recurse, fileExtension, directory));
         }
 
         // Load all of the resources
         for (String resource : listFileSource.resources()) {
+            URL url = this.getClass().getResource(resource);
+            if (url == null) {
+                throw new JUnitException("Failed to get resource [" + resource + "]");
+            }
 
             File directory;
             try {
-                directory = new File(this.getClass().getResource(resource).toURI());
+                directory = new File(url.toURI());
             } catch (URISyntaxException e) {
-                throw new JUnitException("Failed to get resource [resource]", e);
+                throw new JUnitException("Failed to get URI for resource [" + resource + "]");
             }
 
             files.addAll(collect(recurse, fileExtension, directory));
