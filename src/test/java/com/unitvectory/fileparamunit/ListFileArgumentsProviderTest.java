@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -65,6 +66,20 @@ public class ListFileArgumentsProviderTest {
             out.add(f.getName());
         }
         return out;
+    }
+
+    @Test
+    public void testUrlToFile() throws URISyntaxException {
+        ListFileArgumentsProvider provider = new ListFileArgumentsProvider();
+
+        URL url = mock(URL.class);
+        when(url.toURI()).thenThrow(new URISyntaxException("mock", "mock"));
+
+        JUnitException exception = assertThrows(JUnitException.class, () -> {
+            provider.urlToFile(url);
+        });
+
+        assertEquals("Failed to convert URL to File.", exception.getMessage());
     }
 
     @Test

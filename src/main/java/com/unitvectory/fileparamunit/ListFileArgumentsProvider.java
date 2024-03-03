@@ -51,17 +51,21 @@ public class ListFileArgumentsProvider extends AnnotationBasedArgumentsProvider<
                 throw new JUnitException("Failed to get resource [" + resource + "]");
             }
 
-            File directory;
-            try {
-                directory = new File(url.toURI());
-            } catch (URISyntaxException e) {
-                throw new JUnitException("Failed to get URI for resource [" + resource + "]");
-            }
-
+            File directory = urlToFile(url);
             files.addAll(collect(recurse, fileExtension, directory));
         }
 
         return files.stream();
+    }
+
+    File urlToFile(URL url) {
+        // Given the context we are working in this exception should not happen based on prior
+        // checks but it is unavailable to catch and rethrow
+        try {
+            return new File(url.toURI());
+        } catch (URISyntaxException e) {
+            throw new JUnitException("Failed to convert URL to File.", e);
+        }
     }
 
     private List<Arguments> collect(boolean recurse, String fileExtension, File directory) {
