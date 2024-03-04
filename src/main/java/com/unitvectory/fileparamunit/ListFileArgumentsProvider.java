@@ -53,7 +53,7 @@ public class ListFileArgumentsProvider extends AnnotationBasedArgumentsProvider<
 
         // Load all of the resources
         for (String resource : listFileSource.resources()) {
-            URL url = this.getClass().getResource(resource);
+            URL url = ListFileArgumentsProvider.class.getResource(resource);
             if (url == null) {
                 throw new JUnitException("Failed to get resource [" + resource + "]");
             }

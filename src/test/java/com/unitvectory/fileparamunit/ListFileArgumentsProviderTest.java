@@ -85,7 +85,7 @@ public class ListFileArgumentsProviderTest {
     @Test
     public void testDirectoryDoesNoteExist() throws Exception {
 
-        URL url = this.getClass().getResource("/files/");
+        URL url = ListFileArgumentsProviderTest.class.getResource("/files/");
         File directory = new File(url.toURI());
 
         String path = directory.getAbsolutePath() + "/doesnotexist";
@@ -106,7 +106,7 @@ public class ListFileArgumentsProviderTest {
     @Test
     public void testDirectorySuccess() throws Exception {
 
-        URL url = this.getClass().getResource("/files/");
+        URL url = ListFileArgumentsProviderTest.class.getResource("/files/");
         File directory = new File(url.toURI());
 
         ListFileSource listFileSource = mock(ListFileSource.class);
