@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/License-EPL%202.0-blue.svg)](https://www.eclipse.org/legal/epl-v20.html) [![Maven Central](https://img.shields.io/maven-central/v/com.unitvectory/fileparamunit)](https://mvnrepository.com/artifact/com.unitvectory/fileparamunit) [![codecov](https://codecov.io/gh/UnitVectorY-Labs/fileparamunit/graph/badge.svg?token=4V52PCKXPU)](https://codecov.io/gh/UnitVectorY-Labs/fileparamunit)
+[![License](https://img.shields.io/badge/License-EPL%202.0-blue.svg)](https://www.eclipse.org/legal/epl-v20.html) [![Maven Central](https://img.shields.io/maven-central/v/com.unitvectory/fileparamunit)](https://mvnrepository.com/artifact/com.unitvectory/fileparamunit) [![javadoc](https://javadoc.io/badge2/com.unitvectory/fileparamunit/javadoc.svg)](https://javadoc.io/doc/com.unitvectory/fileparamunit) [![codecov](https://codecov.io/gh/UnitVectorY-Labs/fileparamunit/graph/badge.svg?token=4V52PCKXPU)](https://codecov.io/gh/UnitVectorY-Labs/fileparamunit)
 
 # fileparamunit
 
