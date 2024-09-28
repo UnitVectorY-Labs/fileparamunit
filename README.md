@@ -20,7 +20,7 @@ This library requires Java 17 and JUnit 5 and is available in the Maven Central 
 <dependency>
     <groupId>com.unitvectory</groupId>
     <artifactId>fileparamunit</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <scope>test</scope>
 </dependency>
 ```
