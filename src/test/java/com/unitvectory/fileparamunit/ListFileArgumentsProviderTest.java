@@ -26,8 +26,8 @@ import java.util.TreeSet;
 import java.util.stream.Stream;
 
 /**
- * Directly testing the ListFileArgumentsProvider class without going through a full JUnit
- * parameterized test case.
+ * Directly testing the ListFileArgumentsProvider class without going through a
+ * full JUnit parameterized test case.
  * 
  * @author Jared Hatfield (UnitVectorY Labs)
  */
@@ -36,7 +36,7 @@ public class ListFileArgumentsProviderTest {
     private ListFileSource buildMock(String resource, boolean recurse, String fileExtension) {
         ListFileSource listFileSource = mock(ListFileSource.class);
 
-        when(listFileSource.resources()).thenReturn(new String[] {resource});
+        when(listFileSource.resources()).thenReturn(new String[] { resource });
         when(listFileSource.directories()).thenReturn(new String[] {});
         when(listFileSource.recurse()).thenReturn(recurse);
         when(listFileSource.fileExtension()).thenReturn(fileExtension);
@@ -46,8 +46,7 @@ public class ListFileArgumentsProviderTest {
 
     private Set<String> getFiles(ListFileSource listFileSource) {
         ListFileArgumentsProvider provider = new ListFileArgumentsProvider();
-        provider.accept(listFileSource);
-        Stream<? extends Arguments> stream = provider.provideArguments(null);
+        Stream<? extends Arguments> stream = provider.provideArguments(null, null, listFileSource);
         Set<String> set = new TreeSet<String>();
         for (Arguments arg : stream.toList()) {
 
@@ -92,7 +91,7 @@ public class ListFileArgumentsProviderTest {
         ListFileSource listFileSource = mock(ListFileSource.class);
 
         when(listFileSource.resources()).thenReturn(new String[] {});
-        when(listFileSource.directories()).thenReturn(new String[] {path});
+        when(listFileSource.directories()).thenReturn(new String[] { path });
         when(listFileSource.recurse()).thenReturn(false);
         when(listFileSource.fileExtension()).thenReturn(".txt");
 
@@ -112,7 +111,7 @@ public class ListFileArgumentsProviderTest {
         ListFileSource listFileSource = mock(ListFileSource.class);
 
         when(listFileSource.resources()).thenReturn(new String[] {});
-        when(listFileSource.directories()).thenReturn(new String[] {directory.getAbsolutePath()});
+        when(listFileSource.directories()).thenReturn(new String[] { directory.getAbsolutePath() });
         when(listFileSource.recurse()).thenReturn(false);
         when(listFileSource.fileExtension()).thenReturn(".txt");
 
@@ -152,8 +151,7 @@ public class ListFileArgumentsProviderTest {
     public void testRecurseJson() {
         Set<String> files = getFiles(buildMock("/files/", true, ".json"));
         Set<String> actualNames = convertToFileNames(files);
-        Set<String> expectedNames =
-                new HashSet<>(Arrays.asList("foo.json", "bar.json", "baz.json"));
+        Set<String> expectedNames = new HashSet<>(Arrays.asList("foo.json", "bar.json", "baz.json"));
         assertEquals(expectedNames, actualNames);
     }
 
