@@ -17,12 +17,14 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.AnnotationBasedArgumentsProvider;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.support.ParameterDeclarations;
 import org.junit.platform.commons.JUnitException;
 import org.junit.platform.commons.util.Preconditions;
 
 /**
- * The list file argument provider will provide the absolute path to the specified files in each of
- * the files that exist in the specified folder filtered by their file extensions.
+ * The list file argument provider will provide the absolute path to the
+ * specified files in each of the files that exist in the specified folder
+ * filtered by their file extensions.
  * 
  * @author Jared Hatfield (UnitVectorY Labs)
  */
@@ -35,9 +37,16 @@ public class ListFileArgumentsProvider extends AnnotationBasedArgumentsProvider<
         super();
     }
 
+    @Deprecated
     @Override
-    protected Stream<? extends Arguments> provideArguments(ExtensionContext context,
-            ListFileSource listFileSource) {
+    protected Stream<? extends Arguments> provideArguments(
+            ExtensionContext context, ListFileSource listFileSource) {
+        return provideArguments(null, context, listFileSource);
+    }
+
+    @Override
+    protected Stream<? extends Arguments> provideArguments(ParameterDeclarations parameters,
+            ExtensionContext context, ListFileSource listFileSource) {
 
         boolean recurse = listFileSource.recurse();
         String fileExtension = Preconditions.notBlank(listFileSource.fileExtension(),
@@ -66,8 +75,8 @@ public class ListFileArgumentsProvider extends AnnotationBasedArgumentsProvider<
     }
 
     File urlToFile(URL url) {
-        // Given the context we are working in this exception should not happen based on prior
-        // checks but it is unavailable to catch and rethrow
+        // Given the context we are working in this exception should not happen based on
+        // prior checks but it is unavailable to catch and rethrow
         try {
             return new File(url.toURI());
         } catch (URISyntaxException e) {
