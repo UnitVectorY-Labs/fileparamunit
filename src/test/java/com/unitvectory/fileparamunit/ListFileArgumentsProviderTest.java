@@ -46,7 +46,8 @@ public class ListFileArgumentsProviderTest {
 
     private Set<String> getFiles(ListFileSource listFileSource) {
         ListFileArgumentsProvider provider = new ListFileArgumentsProvider();
-        Stream<? extends Arguments> stream = provider.provideArguments(null, null, listFileSource);
+        // This is calling the deprecated method to meet the code coverage goal
+        Stream<? extends Arguments> stream = provider.provideArguments(null, listFileSource);
         Set<String> set = new TreeSet<String>();
         for (Arguments arg : stream.toList()) {
 
