@@ -51,3 +51,23 @@ public class ExampleTest {
     }
 }
 ```
+
+## Dependencies and Compatibility
+
+This library depends on JUnit 5.13.0 or newer specifically due to a breaking change in the `AnnotationBasedArgumentsProvider` class. The `junit-jupiter-params` module must be included in your project as a dependency to use the `@ListFileSource` annotation.
+
+If you have compilation issues related to JUnit 5 when using this library, it is recommended to use the JUnit BOM (Bill of Materials) to ensure compatibility with the JUnit 5 version you are using. You can add the following dependency management section to your `pom.xml`:
+
+```xml
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit</groupId>
+      <artifactId>junit-bom</artifactId>
+      <version>5.13.1</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+```
