@@ -1,0 +1,22 @@
+name: fileparamunit
+default_branch: main
+config:
+  description: "Library for creating parameterized JUnit 5 tests based on files that exist in resources."
+  license: EPL-2.0
+  language: java17
+  release: none
+  release_github: true
+  status: active
+  osv: sarif
+  codecov:
+    enabled: true
+    token: 4V52PCKXPU
+  maven:
+    group_id: com.unitvectory
+    artifact_id: fileparamunit
+    javadoc: true
+  gitignore:
+    - .vscode/
+  clip4llm:
+    exclude:
+      - target
